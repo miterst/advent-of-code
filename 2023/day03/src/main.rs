@@ -21,14 +21,14 @@ fn main() {
 
     let mut gear_ratios = vec![];
     for (_, s) in symbols {
-        let mut ns = vec![];
+        let mut neighbours = vec![];
         for (number, points) in &part_numbers {
             if s.intersection(&points).next().is_some() {
-                ns.push(number.to_string());
+                neighbours.push(number.to_string());
             }
         }
-        if ns.len() == 2 {
-            gear_ratios.push(ns);
+        if neighbours.len() == 2 {
+            gear_ratios.push(neighbours);
         }
     }
 
