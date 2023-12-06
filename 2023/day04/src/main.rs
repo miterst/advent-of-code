@@ -5,8 +5,8 @@ fn main() {
         .lines()
         .enumerate()
         .map(|(i, line)| {
-            let (_, cards) = line.split_once(":").unwrap();
-            let (winning, other) = cards.split_once("|").unwrap();
+            let (_, cards) = line.split_once(':').unwrap();
+            let (winning, other) = cards.split_once('|').unwrap();
             let winning: HashSet<&str> = winning.split_whitespace().collect();
             let other: HashSet<&str> = other.split_whitespace().collect();
 

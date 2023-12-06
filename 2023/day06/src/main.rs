@@ -2,9 +2,8 @@ fn main() {
     let race_data: Vec<Vec<i64>> = include_str!("example")
         .lines()
         .map(|l| {
-            let (_, vals) = l.split_once(":").unwrap();
-            vals.trim()
-                .split_whitespace()
+            let (_, vals) = l.split_once(':').unwrap();
+            vals.split_whitespace()
                 .map(|n| n.parse().unwrap())
                 .collect()
         })
@@ -17,8 +16,8 @@ fn main() {
     let race_data: Vec<i64> = include_str!("example")
         .lines()
         .map(|l| {
-            let (_, vals) = l.split_once(":").unwrap();
-            let s: String = vals.trim().split_whitespace().collect();
+            let (_, vals) = l.split_once(':').unwrap();
+            let s: String = vals.split_whitespace().collect();
             s.parse().unwrap()
         })
         .collect();

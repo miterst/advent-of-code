@@ -10,7 +10,7 @@ fn main() {
         .iter()
         .filter_map(|(number, coords)| {
             points
-                .intersection(&coords)
+                .intersection(coords)
                 .next()
                 .is_some()
                 .then_some(number.parse::<u64>().unwrap())
@@ -23,7 +23,7 @@ fn main() {
     for (_, s) in symbols {
         let mut neighbours = vec![];
         for (number, points) in &part_numbers {
-            if s.intersection(&points).next().is_some() {
+            if s.intersection(points).next().is_some() {
                 neighbours.push(number.to_string());
             }
         }

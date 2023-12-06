@@ -9,7 +9,7 @@ fn main() {
     let seeds: Vec<u64> = it
         .next()
         .map(|s| {
-            let (_, seeds) = s.split_once(":").unwrap();
+            let (_, seeds) = s.split_once(':').unwrap();
             seeds
                 .split_whitespace()
                 .map(|n| n.trim().parse().unwrap())
@@ -74,7 +74,7 @@ struct MapRange {
 
 impl MapRange {
     fn get(&self, v: &u64) -> Option<u64> {
-        if self.from.contains(&v) {
+        if self.from.contains(v) {
             let from = self.from.clone();
             let to: Range<u64> = self.to.clone();
 
@@ -132,39 +132,4 @@ fn parse_map(s: &str) -> Vec<MapRange> {
     }
 
     ranges
-}
-
-pub enum Intersection<T> {
-    Inside(Range<T>),
-    Slack {
-        left: Range<T>,
-        intersection: Range<T>,
-    },
-    Overlapping {
-        left: Range<T>,
-        intersection: Range<T>,
-        right: Range<T>,
-    },
-}
-
-#[cfg(test)]
-mod tests {
-    use crate::MapRange;
-
-    #[test]
-    fn test_intersect() {
-        let x = MapRange {
-            from: 53..61,
-            to: 49..57,
-        };
-
-        match x.map_overlapping(&(57..80)) {
-            Some((i, v)) => {
-                assert_eq!(53..57, i);
-                dbg!(&v);
-                assert!(v.is_empty());
-            }
-            None => todo!(),
-        }
-    }
 }
